@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { jwtDecode } from 'jwt-decode';
 
 
@@ -71,16 +73,39 @@ const MemberAccount = () => {
       const response = await axios.patch(`http://localhost:7000/member/member/${userId}`, update)
 
       if (response.status === 201) {
-        alert(response.data.message);
+        toast.success(`🦄 ${response.data.message}!`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
+        // alert(response.data.message);
         setedit(false);
         getData();
       } else {
         alert(response.data.error);
       }
     } catch (error) {
-      alert("Error occurs during updating the data");
+      toast.error('🦄 Error occurs during updating the data!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+      // alert("Error occurs during updating the data");
     }
   }
+
 
   useEffect(() => {
     getId();
@@ -237,11 +262,33 @@ const MemberAccount = () => {
 
   return (
 
-    <div className='container'>
-      <h2 className='text-center py-5 display-5'>My Account</h2>
+    <>
 
-      {editform()}
-    </div>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
+
+
+      <div className='container'>
+        <h2 className='text-center py-5 display-5'>My Account</h2>
+
+        {editform()}
+      </div>
+
+
+    </>
+
 
   )
 }

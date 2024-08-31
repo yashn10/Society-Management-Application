@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link, Outlet } from "react-router-dom";
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 
@@ -28,11 +30,33 @@ const Layout = () => {
 
             if (response.status === 201) {
                 localStorage.setItem("Admin", response.data.token);
-                window.alert(response.data.message);
+                toast.success(`🦄 ${response.data.message}!`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
+                // window.alert(response.data.message);
                 setdata({ username: "", password: "" });
                 navigate("/adminworks");
             } else {
-                window.alert(response.data.error);
+                // window.alert(response.data.error);
+                toast.error(`🦄 ${response.data.error}`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
             }
         } catch (error) {
             console.error('Error logging in:', error);
@@ -48,12 +72,34 @@ const Layout = () => {
 
             if (response.status === 200) {
                 localStorage.setItem("Member", response.data.token);
-                window.alert(response.data.message);
+                toast.success(`🦄 ${response.data.message}!`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
+                // window.alert(response.data.message);
                 setmember({ email: "", password: "" });
                 setmembers(true);
                 navigate("/memberworks");
             } else {
-                window.alert(response.data.error);
+                // window.alert(response.data.error);
+                toast.error(`🦄 ${response.data.error}`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
             }
         } catch (error) {
             window.alert("error occurs");
@@ -65,7 +111,18 @@ const Layout = () => {
     const logout = () => {
         localStorage.removeItem("Member");
         setmembers(false);
-        alert("Member logout successfully");
+        toast('🦄 Member logout successfully!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+        });
+        // alert("Member logout successfully");
         navigate("/");
     }
 
@@ -168,6 +225,20 @@ const Layout = () => {
     return (
 
         <>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Bounce}
+            />
 
             {navbar()}
 
