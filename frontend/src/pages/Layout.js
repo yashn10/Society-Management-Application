@@ -143,83 +143,109 @@ const Layout = () => {
 
 
     const navbar = () => {
-        if (!members) {
-            return (
-                <nav className="navbar navbar-expand-lg navbar-light fixed-top custom-navbar">
-                    <div className="container-fluid">
-                        <Link className="navbar-brand" to="/">HomeHarmony</Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0 m-auto">
+        return (
+            <nav className="navbar navbar-expand-lg fixed-top custom-navbar">
+                <div className="container-fluid">
+                    <Link className="navbar-brand" to="/">
+                        <i className="fas fa-home"></i> HomeHarmony
+                    </Link>
+                    <button
+                        className="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 m-auto">
+                            <li className="nav-item">
+                                <Link className="nav-link links active" aria-current="page" to={members ? "/memberworks" : "/"}>
+                                    <i className="fas fa-home"></i> Home
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link links" to={members ? "/memberaccount" : "/"}>
+                                    <i className="fas fa-search"></i> {members ? "My Account" : "Search"}
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link links" to={members ? "/membercomplain" : "/homerentlist"}>
+                                    <i className="fas fa-list"></i> {members ? "Complain" : "Rent List"}
+                                </Link>
+                            </li>
+                            {members && (
                                 <li className="nav-item">
-                                    <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                    <Link className="nav-link links" to={"/memberrent"}>
+                                        <i className="fas fa-list"></i> Rent List
+                                    </Link>
                                 </li>
+                            )}
+                            <li className="nav-item">
+                                <Link className="nav-link links" to={members ? "/membersell" : "/homeselllist"}>
+                                    <i className="fas fa-list"></i> Sell List
+                                </Link>
+                            </li>
+                            {members && (
+                                <>
+                                    <li className="nav-item">
+                                        <Link className="nav-link links" to="/password">
+                                            <i className="fas fa-key"></i> Password
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link links" to="/message">
+                                            <i className="fas fa-envelope"></i> Message
+                                        </Link>
+                                    </li>
+                                </>
+                            )}
+                            {!members && (
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">Search</Link>
+                                    <Link className="nav-link links" to="/contact">
+                                        <i className="fas fa-phone-alt"></i> Contact Us
+                                    </Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/homerentlist">Rent List</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/homeselllist">Sell List</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/contact">Contact Us</Link>
-                                </li>
-                            </ul>
-                            <div className="d-flex">
-                                <button className="btn btn-outline-light mx-1 custom-btn" type="button" data-bs-toggle="modal" data-bs-target="#memberModal">Member</button>
-                                <button className="btn btn-outline-light mx-1 custom-btn" type="button" data-bs-toggle="modal" data-bs-target="#adminModal">Admin</button>
-                            </div>
+                            )}
+                        </ul>
+                        <div className="d-flex">
+                            {!members ? (
+                                <>
+                                    <button
+                                        className="btn btn-outline-light mx-1 custom-btn animate-btn"
+                                        type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#memberModal"
+                                    >
+                                        <i className="fas fa-user"></i> Member
+                                    </button>
+                                    <button
+                                        className="btn btn-outline-light mx-1 custom-btn animate-btn"
+                                        type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#adminModal"
+                                    >
+                                        <i className="fas fa-user-shield"></i> Admin
+                                    </button>
+                                </>
+                            ) : (
+                                <button
+                                    className="btn btn-outline-success animate-btn"
+                                    type="button"
+                                    onClick={logout}
+                                >
+                                    <i className="fas fa-sign-out-alt"></i> Logout
+                                </button>
+                            )}
                         </div>
                     </div>
-                </nav>
-            )
-        } else {
-            return (
-                <nav className="navbar navbar-expand-lg navbar-light fixed-top custom-navbar" style={{ "padding": "15px" }}>
-                    <div className="container-fluid">
-                        <Link className="navbar-brand" to="/">HomeHarmony
-                        </Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0 m-auto">
-                                <li className="nav-item">
-                                    <Link className="nav-link active" aria-current="page" to="/memberworks">Home</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/memberaccount">My Account</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/membercomplain">Complain</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/memberrent">Rent List</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/membersell">Sell List</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/password">Password</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/message">Message</Link>
-                                </li>
-                            </ul>
-                            <div className="d-flex">
-                                <button className="btn btn-outline-success" type="button" onClick={logout}>Logout</button>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            )
-        }
-    }
-
+                </div>
+            </nav>
+        );
+    };
 
 
     return (

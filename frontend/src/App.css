@@ -93,47 +93,88 @@
 
 
 /* Navbar.css */
-:root {
-  --primary-color: #0d6efd;
-  --secondary-color: #6c757d;
-  --background-color: #f8f9fa;
-  --text-color: #212529;
+
+.navbar {
+  padding: 7px 30px;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 15px;
 }
 
 .custom-navbar {
-  background-color: var(--background-color);
-  border-bottom: 1px solid var(--secondary-color);
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Semi-transparent black */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Subtle border */
 }
 
-.custom-navbar .navbar-brand {
+.navbar-brand {
+  color: #ffffff;
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--primary-color);
-}
-
-.custom-navbar .navbar-nav .nav-link {
-  color: var(--text-color);
   transition: color 0.3s ease;
 }
 
-.custom-navbar .navbar-nav .nav-link:hover {
-  color: var(--primary-color);
+.navbar-brand:hover {
+  color: #ff5555;
+  /* Accent color */
 }
 
-.custom-navbar .navbar-toggler {
-  border-color: var(--primary-color);
+.links {
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 1rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-.custom-navbar .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='currentColor' stroke-width='2' d='M5 6h20M5 14h20M5 22h20'/%3E%3C/svg%3E");
+.links:hover {
+  color: #ff5555;
+  /* Accent color */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Lighten on hover */
+  border-radius: 5px;
 }
 
 .custom-btn {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .custom-btn:hover {
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: #ff5555;
+  /* Accent color */
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,...");
+  /* Custom SVG or Font Awesome icon */
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.links i,
+.btn i {
+  margin-right: 5px;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.links:hover i,
+.btn:hover i {
+  color: #ff5555;
+  /* Change to your preferred hover color */
 }

@@ -25,8 +25,8 @@ const Adminworks = () => {
 
     const logout = () => {
         localStorage.removeItem("Admin");
-        navigate("/");
         alert("Admin logout successfully");
+        navigate("/");
     }
 
     const renderComponent = () => {
@@ -47,6 +47,8 @@ const Adminworks = () => {
                 return <Selllist />;
             case "renthouse":
                 return <Rentlist />;
+            case "logout":
+                return logout();
             default:
                 return null;
         }
@@ -85,7 +87,7 @@ const Adminworks = () => {
                             <Link className="nav-link active py-2" onClick={() => components("renthouse")}>Rent House Report</Link>
                         </button>
                         <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={logout}>Logout</Link>
+                            <Link className="nav-link active py-2" onClick={() => components("logout")}>Logout</Link>
                         </button>
                     </ul>
                 </div>
