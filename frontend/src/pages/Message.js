@@ -22,7 +22,7 @@ const Message = () => {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`http://localhost:7000/message/message/${userId}`);
+            const response = await axios.get(`https://society-management-application.onrender.com/message/message/${userId}`);
 
             if (response.status === 200) {
                 const message = response.data.data;
@@ -38,7 +38,7 @@ const Message = () => {
 
     const deletemessage = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:7000/message/message/${id}`);
+            const response = await axios.delete(`https://society-management-application.onrender.com/message/message/${id}`);
 
             if (response.status === 201) {
                 toast.success(`🦄 ${response.data.message}!`, {

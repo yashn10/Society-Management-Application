@@ -9,18 +9,18 @@ const Rentlist = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get(`http://localhost:7000/rentlist/rentlist`);
+      const response = await axios.get(`https://society-management-application.onrender.com/rentlist/rentlist`);
 
       if (response.status === 200) {
         const sellData = response.data.data;
         const memberData = await Promise.all(
           sellData.map(async (item) => {
-            const memberResponse = await axios.get(`http://localhost:7000/member/member/${item.memberid}`);
+            const memberResponse = await axios.get(`https://society-management-application.onrender.com/member/member/${item.memberid}`);
             const member = memberResponse.data.member;
 
             let societyName = "N/A";
             if (member.society) {
-              const societyResponse = await axios.get(`http://localhost:7000/society/getsociety/${member.society}`);
+              const societyResponse = await axios.get(`https://society-management-application.onrender.com/society/getsociety/${member.society}`);
               societyName = societyResponse.data.data.name;
             }
 

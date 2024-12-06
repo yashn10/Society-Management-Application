@@ -33,7 +33,7 @@ const AllocateHouse = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:7000/member/addmember", formData, {
+      const response = await axios.post("https://society-management-application.onrender.com/member/addmember", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -53,7 +53,7 @@ const AllocateHouse = () => {
 
   const getdata = async () => {
     try {
-      const response = await axios.get("http://localhost:7000/society/allsociety");
+      const response = await axios.get("https://society-management-application.onrender.com/society/allsociety");
 
       if (response.status === 200) {
         setfirst(response.data.data);

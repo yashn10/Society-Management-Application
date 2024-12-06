@@ -14,7 +14,7 @@ const MemberReport = () => {
 
   const getdata = async () => {
     try {
-      const response = await axios.get(`http://localhost:7000/society/allsociety`);
+      const response = await axios.get(`https://society-management-application.onrender.com/society/allsociety`);
 
       if (response.status === 200) {
         setfirst(response.data.data);
@@ -36,7 +36,7 @@ const MemberReport = () => {
     }
 
     try {
-      const response = await axios.get(`http://localhost:7000/member/getmembersbysociety/${data}`);
+      const response = await axios.get(`https://society-management-application.onrender.com/member/getmembersbysociety/${data}`);
 
       if (response.status === 200) {
         setmembers(response.data.members);
@@ -59,7 +59,7 @@ const MemberReport = () => {
   const deletedata = async (id) => {
 
     try {
-      const response = await axios.delete(`http://localhost:7000/member/member/${id}`);
+      const response = await axios.delete(`https://society-management-application.onrender.com/member/member/${id}`);
 
       if (response.status === 200) {
         window.alert(response.data.message);

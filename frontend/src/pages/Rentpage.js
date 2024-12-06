@@ -23,7 +23,7 @@ const Rentpage = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get(`http://localhost:7000/member/member/${userId}`);
+      const response = await axios.get(`https://society-management-application.onrender.com/member/member/${userId}`);
 
       if (response.status === 200) {
         setmember(response.data.member || null);
@@ -41,7 +41,7 @@ const Rentpage = () => {
 
   const getSociety = async (societyId) => {
     try {
-      const response = await axios.get(`http://localhost:7000/society/getsociety/${societyId}`);
+      const response = await axios.get(`https://society-management-application.onrender.com/society/getsociety/${societyId}`);
 
       if (response.status === 200) {
         setsociety(response.data.data || null);
@@ -56,7 +56,7 @@ const Rentpage = () => {
 
   const getRent = async () => {
     try {
-      const response = await axios.get(`http://localhost:7000/rentlist/rentlist/${userId}`);
+      const response = await axios.get(`https://society-management-application.onrender.com/rentlist/rentlist/${userId}`);
 
       if (response.status === 200) {
         setRent(response.data);
@@ -70,7 +70,7 @@ const Rentpage = () => {
 
   const editdata = async (id) => {
     try {
-      const response = await axios.patch(`http://localhost:7000/rentlist/rentlist/${id}`)
+      const response = await axios.patch(`https://society-management-application.onrender.com/rentlist/rentlist/${id}`)
 
       if (response.status === 201) {
         alert(response.data.message);
@@ -86,7 +86,7 @@ const Rentpage = () => {
 
   const deletedata = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:7000/rentlist/rentlist/${id}`)
+      const response = await axios.delete(`https://society-management-application.onrender.com/rentlist/rentlist/${id}`)
 
       if (response.status === 200) {
         alert(response.data.message);

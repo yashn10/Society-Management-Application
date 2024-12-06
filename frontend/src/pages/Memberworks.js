@@ -38,7 +38,7 @@ const Memberworks = () => {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`http://localhost:7000/member/member/${userId}`);
+            const response = await axios.get(`https://society-management-application.onrender.com/member/member/${userId}`);
 
             if (response.status === 200) {
                 setmember(response.data.member || null);
@@ -56,7 +56,7 @@ const Memberworks = () => {
 
     const getSociety = async (societyId) => {
         try {
-            const response = await axios.get(`http://localhost:7000/society/getsociety/${societyId}`);
+            const response = await axios.get(`https://society-management-application.onrender.com/society/getsociety/${societyId}`);
 
             if (response.status === 200) {
                 setsociety(response.data.data || null);
@@ -78,7 +78,7 @@ const Memberworks = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:7000/rentlist/memberrent', data);
+            const response = await axios.post('https://society-management-application.onrender.com/rentlist/memberrent', data);
 
             if (response.status === 201) {
                 alert(response.data.message);
@@ -100,7 +100,7 @@ const Memberworks = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:7000/selllist/membersell', data);
+            const response = await axios.post('https://society-management-application.onrender.com/selllist/membersell', data);
 
             if (response.status === 201) {
                 alert(response.data.message);

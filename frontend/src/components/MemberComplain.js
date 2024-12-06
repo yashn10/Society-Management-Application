@@ -38,7 +38,7 @@ const MemberComplain = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:7000/complain/complain', data);
+      const response = await axios.post('https://society-management-application.onrender.com/complain/complain', data);
 
       if (response.status === 201) {
         toast.success(`🦄 ${response.data.message}!`, {
@@ -90,7 +90,7 @@ const MemberComplain = () => {
   const getcomplain = async () => {
 
     try {
-      const response = await axios.get(`http://localhost:7000/complain/complain/${userId}`);
+      const response = await axios.get(`https://society-management-application.onrender.com/complain/complain/${userId}`);
 
       if (response.status === 200) {
         setcomp(response.data.complain);

@@ -17,7 +17,7 @@ const Contact = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:7000/contact/contact", member);
+            const response = await axios.post("https://society-management-application.onrender.com/contact/contact", member);
 
             if (response.data.success) {
                 toast.success(`🦄 ${response.data.message}!`, {

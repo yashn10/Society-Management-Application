@@ -29,7 +29,7 @@ const Detail = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:7000/message/message', data);
+            const response = await axios.post('https://society-management-application.onrender.com/message/message', data);
 
             if (response.status === 201) {
                 toast.success(`🦄 ${response.data.message}!`, {
@@ -79,7 +79,7 @@ const Detail = () => {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`http://localhost:7000/member/member/${id}`);
+            const response = await axios.get(`https://society-management-application.onrender.com/member/member/${id}`);
 
             if (response.status === 200) {
                 setmember(response.data.member || null);
@@ -97,7 +97,7 @@ const Detail = () => {
 
     const getSociety = async (societyId) => {
         try {
-            const response = await axios.get(`http://localhost:7000/society/getsociety/${societyId}`);
+            const response = await axios.get(`https://society-management-application.onrender.com/society/getsociety/${societyId}`);
 
             if (response.status === 200) {
                 setsociety(response.data.data || null);
