@@ -32,26 +32,33 @@ const House = () => {
 
     return (
 
-        <form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Society</label>
-                <input type="email" name='society' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handlechange} />
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Block NO</label>
-                <input type="password" name='block' class="form-control" id="exampleInputPassword1" onChange={handlechange} />
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">House Type</label>
-                <input type="password" name='house' class="form-control" id="exampleInputPassword1" onChange={handlechange} />
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Detail</label>
-                <input type="password" name='detail' class="form-control" id="exampleInputPassword1" onChange={handlechange} />
-            </div>
+        <div className="glass-panel p-4 fade-in">
+            <h4 className="text-gradient fw-bold mb-4"><i className="fas fa-home me-2"></i>Add New House</h4>
+            <form>
+                <div className="mb-4">
+                    <label htmlFor="society" className="form-label text-secondary">Society Name</label>
+                    <input type="text" name='society' className="form-control bg-dark text-light border-secondary" id="society" placeholder="Enter society" onChange={handlechange} />
+                </div>
+                <div className="row g-3 mb-4">
+                    <div className="col-md-6">
+                        <label htmlFor="block" className="form-label text-secondary">Block NO</label>
+                        <input type="text" name='block' className="form-control bg-dark text-light border-secondary" id="block" placeholder="e.g. A" onChange={handlechange} />
+                    </div>
+                    <div className="col-md-6">
+                        <label htmlFor="house" className="form-label text-secondary">House Type</label>
+                        <input type="text" name='house' className="form-control bg-dark text-light border-secondary" id="house" placeholder="e.g. 2BHK" onChange={handlechange} />
+                    </div>
+                </div>
+                <div className="mb-4">
+                    <label htmlFor="detail" className="form-label text-secondary">Detail (Optional)</label>
+                    <textarea name='detail' className="form-control bg-dark text-light border-secondary" id="detail" rows="3" placeholder="Additional details..." onChange={handlechange}></textarea>
+                </div>
 
-            <button type="submit" class="btn btn-primary" onClick={submit}>Add House</button>
-        </form>
+                <button type="submit" className="btn btn-primary px-4" onClick={submit}>
+                    <i className="fas fa-plus me-2"></i>Add House
+                </button>
+            </form>
+        </div>
 
     )
 }

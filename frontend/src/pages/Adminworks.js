@@ -57,47 +57,73 @@ const Adminworks = () => {
 
     return (
 
-        <div className='container'>
-            <div className='row mt-5'>
+        <div className='container-fluid px-4 py-5 fade-in'>
+            <div className='row g-4'>
 
-                <div className='col-3'>
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={() => components("addsociety")}>Add Society</Link>
-                        </button>
-                        <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={() => components("addhouse")}>Add House</Link>
-                        </button>
-                        <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={() => components("housereport")}>House Report</Link>
-                        </button>
-                        <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={() => components("allocatehouse")}>Allocate House</Link>
-                        </button>
-                        <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={() => components("memberreport")}>Member Report</Link>
-                        </button>
-                        <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={() => components("complain")}>Complain</Link>
-                        </button>
-                        <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={() => components("sellhouse")}>Sell House Report</Link>
-                        </button>
-                        <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={() => components("renthouse")}>Rent House Report</Link>
-                        </button>
-                        <button className="btn btn-outline-primary text-center mb-2">
-                            <Link className="nav-link active py-2" onClick={() => components("logout")}>Logout</Link>
-                        </button>
-                    </ul>
+                <div className='col-lg-3 col-md-4'>
+                    <div className="glass-panel p-4 sticky-top" style={{ top: '100px' }}>
+                        <h5 className="text-gradient fw-bold mb-4"><i className="fas fa-user-shield me-2"></i>Admin Dashboard</h5>
+                        <ul className="navbar-nav w-100">
+                            <li className="nav-item">
+                                <button className={`btn ${data === 'addsociety' ? 'btn-primary' : 'btn-outline-light'} mb-3 w-100 text-start`} onClick={() => components("addsociety")}>
+                                    <i className="fas fa-building me-2"></i> Add Society
+                                </button>
+                            </li>
+                            <li className="nav-item">
+                                <button className={`btn ${data === 'addhouse' ? 'btn-primary' : 'btn-outline-light'} mb-3 w-100 text-start`} onClick={() => components("addhouse")}>
+                                    <i className="fas fa-home me-2"></i> Add House
+                                </button>
+                            </li>
+                            <li className="nav-item">
+                                <button className={`btn ${data === 'housereport' ? 'btn-primary' : 'btn-outline-light'} mb-3 w-100 text-start`} onClick={() => components("housereport")}>
+                                    <i className="fas fa-file-alt me-2"></i> House Report
+                                </button>
+                            </li>
+                            <li className="nav-item">
+                                <button className={`btn ${data === 'allocatehouse' ? 'btn-primary' : 'btn-outline-light'} mb-3 w-100 text-start`} onClick={() => components("allocatehouse")}>
+                                    <i className="fas fa-key me-2"></i> Allocate House
+                                </button>
+                            </li>
+                            <li className="nav-item">
+                                <button className={`btn ${data === 'memberreport' ? 'btn-primary' : 'btn-outline-light'} mb-3 w-100 text-start`} onClick={() => components("memberreport")}>
+                                    <i className="fas fa-users me-2"></i> Member Report
+                                </button>
+                            </li>
+                            <li className="nav-item">
+                                <button className={`btn ${data === 'complain' ? 'btn-primary' : 'btn-outline-light'} mb-3 w-100 text-start`} onClick={() => components("complain")}>
+                                    <i className="fas fa-exclamation-circle me-2"></i> Complain
+                                </button>
+                            </li>
+                            <li className="nav-item">
+                                <button className={`btn ${data === 'sellhouse' ? 'btn-primary' : 'btn-outline-light'} mb-3 w-100 text-start`} onClick={() => components("sellhouse")}>
+                                    <i className="fas fa-tag me-2"></i> Sell House Report
+                                </button>
+                            </li>
+                            <li className="nav-item">
+                                <button className={`btn ${data === 'renthouse' ? 'btn-primary' : 'btn-outline-light'} mb-3 w-100 text-start`} onClick={() => components("renthouse")}>
+                                    <i className="fas fa-sign me-2"></i> Rent House Report
+                                </button>
+                            </li>
+                            <li>
+                                <hr className="my-2 border-secondary" />
+                            </li>
+                            <li className="nav-item">
+                                <button className="btn btn-outline-danger mt-2 w-100 text-start" onClick={() => components("logout")}>
+                                    <i className="fas fa-sign-out-alt me-2"></i> Logout
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div className='col-9'>
-                    {renderComponent()}
+                <div className='col-lg-9 col-md-8'>
+                    <div className="glass-panel p-4 h-100 min-vh-50 fade-in delay-100">
+                        {renderComponent()}
+                    </div>
                 </div>
 
             </div>
-        </div>
+        </div >
 
     )
 }

@@ -48,33 +48,33 @@ const Rentlist = () => {
 
   return (
 
-    <div className="container my-5">
-      <h2 className="text-center mb-5">Rent Listings</h2>
-      <div className="table-responsive">
-
-        <table className="table table-striped table-bordered table-hover shadow-sm">
-          <thead className="table-success">
-            <tr>
-              <th scope="col">Username</th>
-              <th scope="col">Mobile</th>
-              <th scope="col">Society Name</th>
-              <th scope="col">House No</th>
-              <th scope="col">Rent Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {selllist.map((data, index) => (
-              <tr key={index}>
-                <td>{data.member?.firstname || "N/A"}</td>
-                <td>{data.member?.mobile || "N/A"}</td>
-                <td>{data.societyName}</td>
-                <td>{data.member?.houseno || "N/A"}</td>
-                <td>{data.Rentprice}</td>
+    <div className="fade-in">
+      <h4 className="text-gradient fw-bold mb-4"><i className="fas fa-sign me-2"></i>Rent Listings</h4>
+      <div className="glass-panel p-4 border-0">
+        <div className="table-responsive">
+          <table className="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Society Name</th>
+                <th scope="col">House No</th>
+                <th scope="col">Rent Price</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-
+            </thead>
+            <tbody>
+              {selllist.map((data, index) => (
+                <tr key={index}>
+                  <td className="fw-semibold text-light">{data.member?.firstname || "N/A"}</td>
+                  <td>{data.member?.mobile || "N/A"}</td>
+                  <td className="text-secondary">{data.societyName}</td>
+                  <td><span className="badge bg-dark border border-secondary">{data.member?.houseno || "N/A"}</span></td>
+                  <td><span className="badge bg-primary rounded-pill px-3 py-2">${data.Rentprice?.toLocaleString() || "N/A"}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 

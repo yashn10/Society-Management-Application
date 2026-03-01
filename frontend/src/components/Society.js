@@ -73,62 +73,76 @@ const Society = () => {
 
     <>
 
-      <form>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Society Name</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='name' value={data.name} onChange={handlechange} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">NO Of Houses</label>
-          <input type="number" class="form-control" id="exampleInputPassword1" name='houses' value={data.houses} onChange={handlechange} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Address</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" name='address' value={data.address} onChange={handlechange} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">City</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" name='city' value={data.city} onChange={handlechange} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Pincode</label>
-          <input type="number" class="form-control" id="exampleInputPassword1" name='pincode' value={data.pincode} onChange={handlechange} />
+      <div className="fade-in">
+        <div className="glass-panel p-4 mb-5">
+          <h4 className="text-gradient fw-bold mb-4"><i className="fas fa-building me-2"></i>Add New Society</h4>
+          <form>
+            <div className="row g-3">
+              <div className="col-md-6 mb-3">
+                <label htmlFor="societyName" className="form-label text-secondary">Society Name</label>
+                <input type="text" className="form-control bg-dark text-light border-secondary" id="societyName" name='name' placeholder="Enter society name" value={data.name} onChange={handlechange} />
+              </div>
+              <div className="col-md-6 mb-3">
+                <label htmlFor="noOfHouses" className="form-label text-secondary">No Of Houses</label>
+                <input type="number" className="form-control bg-dark text-light border-secondary" id="noOfHouses" name='houses' placeholder="e.g. 50" value={data.houses} onChange={handlechange} />
+              </div>
+              <div className="col-md-12 mb-3">
+                <label htmlFor="address" className="form-label text-secondary">Address</label>
+                <input type="text" className="form-control bg-dark text-light border-secondary" id="address" name='address' placeholder="Enter full address" value={data.address} onChange={handlechange} />
+              </div>
+              <div className="col-md-6 mb-3">
+                <label htmlFor="city" className="form-label text-secondary">City</label>
+                <input type="text" className="form-control bg-dark text-light border-secondary" id="city" name='city' placeholder="City" value={data.city} onChange={handlechange} />
+              </div>
+              <div className="col-md-6 mb-4">
+                <label htmlFor="pincode" className="form-label text-secondary">Pincode</label>
+                <input type="number" className="form-control bg-dark text-light border-secondary" id="pincode" name='pincode' placeholder="Pincode" value={data.pincode} onChange={handlechange} />
+              </div>
+            </div>
+            <button type="submit" className="btn btn-primary px-4" onClick={submit}>
+              <i className="fas fa-plus me-2"></i>Add Society
+            </button>
+          </form>
         </div>
 
-        <button type="submit" className="btn btn-outline-success" onClick={submit}>Add Society</button>
-      </form>
-
-      <table className="table mt-4">
-        <thead>
-          <tr>
-            <th scope="col">Action</th>
-            <th scope="col">Image</th>
-            <th scope="col">Society</th>
-            <th scope="col">Address</th>
-            <th scope="col">City</th>
-            <th scope="col">Pincode</th>
-            <th scope="col">House</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            first.map((data, index) => (
-              <tr key={index}>
-                <th>
-                  <button className='btn btn-outline-danger' onClick={() => deletedata(data._id)}>Delete</button>
-                </th>
-                <td>{data.image}</td>
-                <td>{data.name}</td>
-                <td>{data.address}</td>
-                <td>{data.city}</td>
-                <td>{data.pincode}</td>
-                <td>{data.houses}</td>
-              </tr>
-            )
-            )
-          }
-        </tbody>
-      </table>
+        <div className="glass-panel p-4 delay-100">
+          <h4 className="text-light fw-bold mb-4"><i className="fas fa-list me-2"></i>Societies List</h4>
+          <div className="table-responsive">
+            <table className="table mt-2 align-middle">
+              <thead>
+                <tr>
+                  <th scope="col">Action</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Society</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Pincode</th>
+                  <th scope="col">Houses</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  first.map((data, index) => (
+                    <tr key={index}>
+                      <td>
+                        <button className='btn btn-sm btn-outline-danger' onClick={() => deletedata(data._id)}>
+                          <i className="fas fa-trash-alt"></i>
+                        </button>
+                      </td>
+                      <td>{data.image || '-'}</td>
+                      <td className="fw-semibold text-light">{data.name}</td>
+                      <td className="text-secondary">{data.address}</td>
+                      <td>{data.city}</td>
+                      <td>{data.pincode}</td>
+                      <td><span className="badge bg-primary rounded-pill">{data.houses}</span></td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
     </>
 

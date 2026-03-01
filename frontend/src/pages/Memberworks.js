@@ -127,12 +127,16 @@ const Memberworks = () => {
     const rentforms = () => {
         if (rentedit) {
             return (
-                <form>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Rent Price</label>
-                        <input type="number" className="form-control" name='Rentprice' id="exampleInputPassword1" onChange={handlechange} value={rent.Rentprice} />
+                <form className="mt-4 p-4 glass-panel border-0 fade-in bg-dark bg-opacity-25 rounded-3">
+                    <h5 className="text-light mb-3"><i className="fas fa-home me-2"></i>List Home for Rent</h5>
+                    <div className="mb-4">
+                        <label htmlFor="Rentprice" className="form-label text-secondary">Rent Price (per month)</label>
+                        <div className="input-group">
+                            <span className="input-group-text bg-dark text-light border-secondary border-end-0">$</span>
+                            <input type="number" className="form-control form-control-lg bg-dark text-light border-secondary border-start-0 ps-0" name='Rentprice' id="Rentprice" placeholder="e.g. 1500" onChange={handlechange} value={rent.Rentprice} />
+                        </div>
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={Addrent}>Submit</button>
+                    <button type="submit" className="btn btn-primary px-4" onClick={Addrent}>Submit Listing</button>
                 </form>
             )
         }
@@ -141,12 +145,16 @@ const Memberworks = () => {
     const sellforms = () => {
         if (selledit) {
             return (
-                <form>
-                    <div className="mb-3">
-                        <label for="exampleInputPassword1" className="form-label">Sell Price</label>
-                        <input type="number" className="form-control" name='Sellprice' id="exampleInputPassword1" onChange={handlechangesell} value={sell.Sellprice} />
+                <form className="mt-4 p-4 glass-panel border-0 fade-in bg-dark bg-opacity-25 rounded-3">
+                    <h5 className="text-light mb-3"><i className="fas fa-tag me-2"></i>List Home for Sale</h5>
+                    <div className="mb-4">
+                        <label htmlFor="Sellprice" className="form-label text-secondary">Selling Price</label>
+                        <div className="input-group">
+                            <span className="input-group-text bg-dark text-light border-secondary border-end-0">$</span>
+                            <input type="number" className="form-control form-control-lg bg-dark text-light border-secondary border-start-0 ps-0" name='Sellprice' id="Sellprice" placeholder="e.g. 250000" onChange={handlechangesell} value={sell.Sellprice} />
+                        </div>
                     </div>
-                    <button type="submit" className="btn btn-primary" onClick={Addsell}>Submit</button>
+                    <button type="submit" className="btn btn-primary px-4" onClick={Addsell}>Submit Listing</button>
                 </form>
             )
         }
@@ -155,47 +163,61 @@ const Memberworks = () => {
 
     return (
 
-        <div className="container py-5">
-            <h4 className="text-center mb-5 display-6">Welcome to E-Housing Helping Society</h4>
+        <div className="container py-5 fade-in">
+            <h2 className="text-center mb-5 display-5 fw-bold text-gradient">Member Portal Dashboard</h2>
 
             {member && society ? (
-                <div className="row mt-5">
-                    <div className="col-md-4 text-center mb-4">
+                <div className="row g-5 align-items-start mt-2">
+                    <div className="col-md-4 text-center mb-4 delay-100 float-anim">
                         {member.photo ? (
-                            <img
-                                src={`http://localhost:7000/${member.photo}`}
-                                alt={`Photo of ${society.name}`}
-                                className="img-fluid rounded shadow-sm"
-                                style={{ maxHeight: '300px', objectFit: 'cover' }}
-                            />
+                            <div className="glass-panel p-2 pb-0 mb-3 d-inline-block">
+                                <img
+                                    src={`http://localhost:7000/${member.photo}`}
+                                    alt={`Photo of ${society.name}`}
+                                    className="img-fluid rounded"
+                                    style={{ width: '100%', maxHeight: '400px', objectFit: 'cover' }}
+                                />
+                            </div>
                         ) : (
-                            <div className="bg-light rounded shadow-sm d-flex align-items-center justify-content-center" style={{ height: '300px' }}>
-                                <p className="text-muted">No Photo Available</p>
+                            <div className="glass-panel bg-dark rounded d-flex align-items-center justify-content-center" style={{ height: '300px' }}>
+                                <div className="text-center">
+                                    <i className="fas fa-image fa-3x text-muted mb-3"></i>
+                                    <p className="text-secondary">No Photo Available</p>
+                                </div>
                             </div>
                         )}
                     </div>
 
 
-                    <div className="col-md-8">
-                        <div className="card shadow-sm">
-                            <div className="card-body">
-                                <h5 className="card-title text-secondary mb-4">Society Name: <span className="text-dark">{society.name}</span></h5>
-                                <h6 className="card-subtitle mb-5 text-muted">House Number: <span className="text-dark">{member.houseno}</span></h6>
+                    <div className="col-md-8 delay-200 fade-in">
+                        <div className="card glass-panel border-0">
+                            <div className="card-body p-4 p-md-5">
+                                <h3 className="card-title fw-bold mb-3">
+                                    Society: <span className="text-gradient">{society.name}</span>
+                                </h3>
+                                <h5 className="card-subtitle mb-5 text-light d-flex align-items-center">
+                                    <i className="fas fa-door-closed text-secondary me-2"></i>
+                                    House Number: <span className="ms-2 fw-bold bg-dark bg-opacity-50 px-3 py-1 rounded-pill">{member.houseno}</span>
+                                </h5>
 
-                                <ul className="nav nav-tabs" id="myTab" role="tablist">
+                                <ul className="nav nav-pills mb-4 border-bottom border-secondary pb-3 gap-2" id="myTab" role="tablist">
                                     <li className="nav-item" role="presentation">
-                                        <button className="nav-link active" id="rent-tab" data-bs-toggle="tab" data-bs-target="#rent" type="button" role="tab" onClick={() => setrentedit(true)}>Rent Home</button>
+                                        <button className={`nav-link rounded-pill ${rentedit ? 'active bg-primary text-white' : 'text-light bg-dark bg-opacity-50'}`} id="rent-tab" data-bs-toggle="tab" data-bs-target="#rent" type="button" role="tab" onClick={() => { setrentedit(true); setselledit(false); }}>
+                                            <i className="fas fa-key me-2"></i>Rent Home
+                                        </button>
                                     </li>
                                     <li className="nav-item" role="presentation">
-                                        <button className="nav-link" id="sell-tab" data-bs-toggle="tab" data-bs-target="#sell" type="button" role="tab" onClick={() => setselledit(true)}>Sell Home</button>
+                                        <button className={`nav-link rounded-pill ${selledit ? 'active bg-primary text-white' : 'text-light bg-dark bg-opacity-50'}`} id="sell-tab" data-bs-toggle="tab" data-bs-target="#sell" type="button" role="tab" onClick={() => { setselledit(true); setrentedit(false); }}>
+                                            <i className="fas fa-tag me-2"></i>Sell Home
+                                        </button>
                                     </li>
                                 </ul>
 
-                                <div className="tab-content mt-4" id="myTabContent">
-                                    <div className="tab-pane fade show active" id="rent" role="tabpanel">
+                                <div className="tab-content" id="myTabContent">
+                                    <div className={`tab-pane fade ${rentedit ? 'show active' : ''}`} id="rent" role="tabpanel">
                                         {rentforms()}
                                     </div>
-                                    <div className="tab-pane fade" id="sell" role="tabpanel">
+                                    <div className={`tab-pane fade ${selledit ? 'show active' : ''}`} id="sell" role="tabpanel">
                                         {sellforms()}
                                     </div>
                                 </div>
@@ -204,7 +226,12 @@ const Memberworks = () => {
                     </div>
                 </div>
             ) : (
-                <p className="text-center text-muted py-5">Loading member or society data...</p>
+                <div className="text-center py-5">
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                    <p className="mt-3 text-secondary">Loading member or society data...</p>
+                </div>
             )}
         </div>
 

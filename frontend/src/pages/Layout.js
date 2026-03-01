@@ -144,7 +144,7 @@ const Layout = () => {
 
     const navbar = () => {
         return (
-            <nav className="navbar navbar-expand-lg fixed-top custom-navbar">
+            <nav className="navbar navbar-expand-lg fixed-top custom-navbar fade-in">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">
                         <i className="fas fa-home"></i> HomeHarmony
@@ -269,53 +269,53 @@ const Layout = () => {
             {navbar()}
 
 
-            <div className="row" style={{ paddingTop: "60px" }}>
+            <div className="container-fluid px-4" style={{ paddingTop: "80px", minHeight: "calc(100vh - 80px)" }}>
                 <Outlet />
             </div>
 
 
-            <div className="modal fade" id="memberModal" tabindex="-1" aria-labelledby="memberModalLabel" aria-hidden="true">
+            <div className="modal fade" id="memberModal" tabIndex="-1" aria-labelledby="memberModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">Member Login</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div className="modal-content glass-panel border-0">
+                        <div className="modal-header border-bottom-0 pb-0">
+                            <h1 className="modal-title fs-4 fw-bold text-gradient" id="memberModalLabel">Member Login</h1>
+                            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <form className="w-75 m-auto py-4">
-                                <div className="mb-3">
-                                    <label for="exampleInputEmail1" className="form-label">Email</label>
-                                    <input type="email" name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handlemember} />
+                            <form className="w-100 px-3 py-2">
+                                <div className="mb-4">
+                                    <label htmlFor="memberEmail" className="form-label text-secondary">Email Address</label>
+                                    <input type="email" name="email" className="form-control form-control-lg bg-dark text-light border-secondary" id="memberEmail" placeholder="Enter your email" onChange={handlemember} />
                                 </div>
-                                <div className="mb-3">
-                                    <label for="exampleInputPassword1" className="form-label">Password</label>
-                                    <input type="password" name="password" className="form-control" id="exampleInputPassword1" onChange={handlemember} />
+                                <div className="mb-4">
+                                    <label htmlFor="memberPassword" className="form-label text-secondary">Password</label>
+                                    <input type="password" name="password" className="form-control form-control-lg bg-dark text-light border-secondary" id="memberPassword" placeholder="Enter password" onChange={handlemember} />
                                 </div>
-                                <button type="submit" className="btn btn-outline-primary" onClick={membersubmit}>Login</button>
+                                <button type="submit" className="btn btn-primary w-100 py-2 mt-2" onClick={membersubmit}>Login</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+            <div className="modal fade" id="adminModal" tabIndex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">Admin Login</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div className="modal-content glass-panel border-0">
+                        <div className="modal-header border-bottom-0 pb-0">
+                            <h1 className="modal-title fs-4 fw-bold text-gradient" id="adminModalLabel">Admin Login</h1>
+                            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <form className='w-75 m-auto py-4'>
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                                    <input type="text" name='username' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={data.username} onChange={handlechange} />
+                            <form className="w-100 px-3 py-2">
+                                <div className="mb-4">
+                                    <label htmlFor="adminUsername" className="form-label text-secondary">Username</label>
+                                    <input type="text" name="username" className="form-control form-control-lg bg-dark text-light border-secondary" id="adminUsername" placeholder="Enter admin username" value={data.username} onChange={handlechange} />
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                                    <input type="password" name='password' class="form-control" id="exampleInputPassword1" value={data.password} onChange={handlechange} />
+                                <div className="mb-4">
+                                    <label htmlFor="adminPassword" className="form-label text-secondary">Password</label>
+                                    <input type="password" name="password" className="form-control form-control-lg bg-dark text-light border-secondary" id="adminPassword" placeholder="Enter admin password" value={data.password} onChange={handlechange} />
                                 </div>
-                                <button type="submit" class="btn btn-outline-primary" onClick={submit}>Login</button>
+                                <button type="submit" className="btn btn-primary w-100 py-2 mt-2" onClick={submit}>Login as Admin</button>
                             </form>
                         </div>
                     </div>
